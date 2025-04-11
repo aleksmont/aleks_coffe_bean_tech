@@ -16,11 +16,11 @@ class AuthController < ApplicationController
 
         ip_info = IpHelper::get_info(ip_address)
 
-        # if ip_info[:success]
+        if ip_info[:success]
           user_session.city = ip_info[:city]
           user_session.state = ip_info[:state]
           user_session.country = ip_info[:country]
-        # end
+        end
 
         user_session.save!
 

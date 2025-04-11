@@ -10,7 +10,7 @@ module IpHelper
       response = Net::HTTP.get_response(url)
       resp = JSON.parse(response.body)
       {
-        success: response.code == 200,
+        success: response.code.to_i == 200,
         city: resp["city"],
         state: resp["region"],
         country: resp["country"]
