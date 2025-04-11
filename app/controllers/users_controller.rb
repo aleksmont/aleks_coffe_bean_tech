@@ -11,13 +11,12 @@ class UsersController < ApplicationController
       ip_address = request.remote_ip
       user_session = UserSession.new(user_id: @user.id, ip_address: ip_address)
 
-      # Geocodificar o IP
-      location = Geocoder.search(ip_address).first
+      ip_info = IpHelper::get_info(ip_address)
 
-      if location
-        user_session.city = location.city
-        user_session.state = location.state
-        user_session.country = location.country
+      if ip_info[:success]
+        user_session.city = ip_info[:city]
+        user_session.state = ip_info[:state]
+        user_session.country = ip_info[:country]
       end
 
       user_session.save

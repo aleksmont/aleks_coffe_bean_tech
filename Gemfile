@@ -37,9 +37,6 @@ gem "kamal", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
-# Geolocation and other infos from requests IP
-gem 'geocoder', '~> 1.8', '>= 1.8.5'
-
 gem "simple_form", "~> 5.1.0"
 
 gem "dartsass-rails"
