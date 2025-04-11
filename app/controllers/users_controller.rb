@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       user_session = UserSession.new(user_id: @user.id, ip_address: ip_address)
 
       # Geocodificar o IP
-      location = Geocoder.search(@ip).first
+      location = Geocoder.search(ip_address).first
 
       if location
         user_session.city = location.city
