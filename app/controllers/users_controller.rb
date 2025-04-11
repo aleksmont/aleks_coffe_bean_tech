@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     begin
       @current_user_id = session[:current_user_id]
       @user = User.find(@current_user_id)
+      @user_session = UserSession.where(user_id: @user.id, revoked: false).first
     rescue StandardError => e
       redirect_to '/auth/login', notice: "Session not found."
     end
