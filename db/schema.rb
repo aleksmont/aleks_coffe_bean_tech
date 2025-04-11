@@ -14,9 +14,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_11_015603) do
   create_table "user_sessions", force: :cascade do |t|
     t.datetime "logged_at"
     t.boolean "revoked", default: false
-    t.integer "user_id"
+    t.string "city"
+    t.string "state"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_user_sessions_on_user_id"
   end
 
