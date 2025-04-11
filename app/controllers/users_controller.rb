@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
     @ip = request.remote_ip
 
+    @result = request.location
+
     # Geocodificar o IP
     location = Geocoder.search(@ip).first
 
