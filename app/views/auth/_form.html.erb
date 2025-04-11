@@ -1,8 +1,0 @@
-<h2>Login</h2>
-
-<%= simple_form_for :session, url: '/auth/authenticate' do |f| %>
-  <%= f.input :email, required: true, autofocus: true %>
-  <%= f.input :password, required: true %>
-
-  <%= f.button :submit, "Log in" %>
-<% end %>
