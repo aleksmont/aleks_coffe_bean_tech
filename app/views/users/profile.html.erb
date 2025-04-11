@@ -1,11 +1,9 @@
 <h1>User Profile</h1>
-<h1>current_user_id: <%=@current_user_id%></h1>
-<p>IP: <%= @ip %></p>
-<p>cidade: <%= @cidade %></p>
-<p>estado: <%= @estado %></p>
-<p>pais: <%= @pais %></p>
-<p>result: <%= @result %></p>
-
+<h1>current_user_id: <%= @current_user_id %></h1>
+<p>IP: <%= @user_session.ip_address %></p>
+<p>cidade: <%= @user_session.city %></p>
+<p>estado: <%= @user_session.state %></p>
+<p>pais: <%= @user_session.country %></p>
 
 <%= form_tag 'auth/logout', method: :post do %>
   <%= submit_tag 'Logout' %>
