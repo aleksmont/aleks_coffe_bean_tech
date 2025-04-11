@@ -1,5 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
+
+  #
+  # Realtions
+  #
   has_many :user_sessions
 
   #
@@ -9,8 +13,11 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { minimum: 5, maximum: 128 }
   validates :email, presence: true, uniqueness: true
 
-  validate :email_valid?
-  validate :password_valid?
+  #
+  # Lifecycle
+  #
+
+  # before_create :email_valid?, :password_valid?
 
   def email_valid?
     # formato local-part@domain, sendo que: ○

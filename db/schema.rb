@@ -14,6 +14,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_11_015603) do
   create_table "user_sessions", force: :cascade do |t|
     t.datetime "logged_at"
     t.boolean "revoked", default: false
+    t.string "ip_address"
     t.string "city"
     t.string "state"
     t.string "country"

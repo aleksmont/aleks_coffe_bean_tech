@@ -3,6 +3,7 @@ class CreateUserSessions < ActiveRecord::Migration[8.0]
     create_table :user_sessions do |t|
       t.datetime :logged_at
       t.boolean :revoked, default: false
+      t.string :ip_address
       t.string :city
       t.string :state
       t.string :country
