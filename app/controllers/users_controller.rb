@@ -25,7 +25,6 @@ class UsersController < ApplicationController
 
       redirect_to root_path, notice: "User was successfully created."
     else
-      # Add `status: :unprocessable_entity` here
       render :new, status: :unprocessable_entity
     end
   end

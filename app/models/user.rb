@@ -17,7 +17,7 @@ class User < ApplicationRecord
   # Lifecycle
   #
 
-  # before_create :email_valid?, :password_valid?
+  before_create :email_valid?, :password_valid?
 
   def email_valid?
     # formato local-part@domain, sendo que: ○
@@ -46,14 +46,16 @@ class User < ApplicationRecord
     # Validar parte local
     local_regex = /\A[0-9A-Za-z!#$%&'*+=?^_`{|}~.]+\z/
     unless local_part.match?(local_regex)
-      errors.add(:email, 'Email - local-part must be valid')
+      errors.add(:email, '- local-part must be valid. HINT: #   máximo de 64 caracteres,
+    #   formado por dígitos (0-9), letras maiúsculas # (A-Z) ou minúsculas (a-z), caracteres especiais (!#$%&*+-/=?^_`{|}~) ou ponto (.)')
       throw :abort
     end
 
     # Validar domínio
     domain_regex = /\A[0-9A-Za-z.-]+\z/
     unless domain.match?(domain_regex)
-      errors.add(:email, 'Email - domain must be valid')
+      errors.add(:email, 'Email - domain must be valid. HINT: #   máximo de 128 caracteres,
+    #   formado por dígitos (0-9), letras maiúsculas (A-Z) ou minúsculas (a-z), ponto (.) ou hífen (-).')
       throw :abort
     end
 
@@ -87,7 +89,11 @@ class User < ApplicationRecord
 
     # Verifica os critérios
     unless (digitos >= 2 && caracteres_especiais >= 2 && maiusculas >= 2 && minusculas >= 2)
-      errors.add(:password, 'invalid password format')
+      errors.add(:password, 'invalid password format - Hint:   # mínimo de 10 caracteres e máximo de 72
+    # mínimo de 2 dígitos (0-9)
+    # mínimo de 2 caracteres especiais
+    # mínimo de 2 letras maiúsculas (A-Z)
+    # mínimo de 2 letras minúsculas (a-z)')
       throw :abort
     end
   end
